@@ -8,7 +8,7 @@ const vendorRoutes = require('./routes/vendorRoutes')  //import vendor routes fr
 const bodyParser = require('body-parser')  //import the body-parser for passing request bodies 4
 const firmRoutes = require('./routes/firmRoutes') //
 const productRoutes = require('./routes/productRoutes') 
-
+const path = require('path') 
 
 
 
@@ -19,7 +19,7 @@ const productRoutes = require('./routes/productRoutes')
 
 const app = express()  //create a new express application 
 
-const PORT = 4000  //define port number for the server 
+const PORT = process.env.PORT || 4000  //define port number for the server 
 
 
 //...................END...........................
@@ -48,6 +48,9 @@ app.use(bodyParser.json()) //enables json body parsing for incomming requests
 app.use('/vendor', vendorRoutes); //Mounts vendor routes at the vendor path 
 app.use('/firm' , firmRoutes);    //Mounts Firm routes at the vendor path 
 app.use('/product', productRoutes)
+app.use('/uploads' , express.static('uploads')) 
+
+
 ///....................END..........................
 
 
@@ -57,7 +60,7 @@ app.listen(PORT , () => {
     console.log(`server started and running at ${PORT}`);  // start the server listeing on the specifieed port
 
 } )
-app.use('/home' , (req , res) => {
+app.use('/' , (req , res) => {
     res.send("<h1>Wellcome to Mahe_Resturent </h1>")
 
 })

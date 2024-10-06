@@ -8,7 +8,8 @@ const vendorRoutes = require('./routes/vendorRoutes')  //import vendor routes fr
 const bodyParser = require('body-parser')  //import the body-parser for passing request bodies 4
 const firmRoutes = require('./routes/firmRoutes') //
 const productRoutes = require('./routes/productRoutes') 
-const path = require('path') 
+const path = require('path')
+const cors = require('cors') 
 
 
 
@@ -18,7 +19,6 @@ const path = require('path')
 //...............SETING UP EXPRESS APP.......................
 
 const app = express()  //create a new express application 
-
 const PORT = process.env.PORT || 4000  //define port number for the server 
 
 
@@ -27,6 +27,7 @@ const PORT = process.env.PORT || 4000  //define port number for the server
 //............CONFIGURING ENVIRONMENT VARIABLES ..........................
 
 dotEnv.config();  //load environment variables from .env file 
+app.use(cors())
 
 
 //.....................END.......................................

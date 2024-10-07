@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
 
     },
     bsetseller: {
-        type: String
+        type: Boolean
     },
     description: {
         type: String
